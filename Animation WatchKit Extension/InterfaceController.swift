@@ -12,6 +12,11 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet var animation: WKInterfaceImage!
+    @IBOutlet var button: WKInterfaceButton!
+    
+    var animated = true
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
@@ -28,4 +33,18 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    @IBAction func buttonPressed() {
+
+        if animated {
+            animation.stopAnimating()
+            animated = false
+            button.setTitle("Start")
+        } else {
+            animation.startAnimating()
+            animated = true
+            button.setTitle("Start")
+        }
+        
+        
+    }
 }
